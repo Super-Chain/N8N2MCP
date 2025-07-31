@@ -74,7 +74,7 @@ graph TB
 
 > ⚠️ **Important**: Playwright installation is **required** for N8N workflow execution. The system will use dummy credentials if Playwright is not properly installed, limiting functionality.
 
-### Quick Start
+### Docker-based Setup (Recommended)
 
 1. **Clone the repository**
    ```bash
@@ -82,18 +82,7 @@ graph TB
    cd N8N2MCP
    ```
 
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-    ```
-
-3. **Install Playwright browsers** (Required)
-   ```bash
-   playwright install
-   # This downloads the necessary browser binaries for N8N authentication
-   ```
-
-4. **Configure environment**
+2. **Configure environment**
    ```bash
    # Copy and edit the .env file (see Environment Configuration section)
    cp .env.example .env
@@ -124,6 +113,40 @@ graph TB
     N8N_AUTH=
     N8N_BROWSER_ID=   
     ```
+
+3. **Start the application**
+   ```bash
+   docker-compose up --build
+   ```
+   This will build the Docker images and start the services. The application will be available at http://localhost:5000.
+
+   > **Note:** The first time you run the application, it will check for missing credentials and prompt you to enter them. It will also provide links to the documentation for each credential. To avoid this prompt in the future, you can create a `.env` file with the required credentials.
+
+### Manual Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Super-Chain/N8N2MCP.git
+   cd N8N2MCP
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+    ```
+
+3. **Install Playwright browsers** (Required)
+   ```bash
+   playwright install
+   # This downloads the necessary browser binaries for N8N authentication
+   ```
+
+4. **Configure environment**
+   ```bash
+   # Copy and edit the .env file (see Environment Configuration section)
+   cp .env.example .env
+   # Edit .env with your actual configuration values
+   ```
 
 5. **Start both servers**
    ```bash
@@ -198,6 +221,7 @@ curl http://localhost:6545/list  # List all registered MCP servers
 
 ```
 N8N2MCP/
+├── Dockerfile                     # Docker configuration
 ├── main.py                        # Unified server startup script
 ├── requirements.txt               # Consolidated Python dependencies
 ├── .env                          # Environment configuration (shared)
@@ -207,9 +231,18 @@ N8N2MCP/
 │   ├── database.py               # Supabase integration & data models
 │   ├── n8n_workflow_parser.py    # Workflow analysis engine
 │   ├── setup_supabase.py         # Database setup utilities
+│   ├── static/                   # Static assets
+│   │   ├── css/                  # CSS files
+│   │   │   ├── main.css          # Main stylesheet
+│   │   │   └── variables.css     # CSS variables
+│   │   └── js/                   # JavaScript files
+│   │       ├── api.js            # API abstraction layer
+│   │       ├── main.js           # Main application logic
+│   │       └── ui.js             # UI management
 │   ├── templates/                # HTML templates
-│   │   ├── workflows.html        # Main marketplace interface
-│   │   └── static/               # CSS, JS assets
+│   │   ├── index.html          # Main application entry point
+│   │   ├── layout.html         # Base layout
+│   │   └── workflows.html      # Workflows page
 │   └── __init__.py               # Python package marker
 │
 ├── mcp_router/                   # FastAPI MCP service

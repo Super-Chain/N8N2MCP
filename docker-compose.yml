@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  agent_marketplace:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
+  mcp_router:
+    image: python:3.11-slim
+    ports:
+      - "6545:6545"
+    volumes:
+      - ./mcp_router:/app
+    command: ["python", "mcp_router.py"]
+    env_file:
+      - .env

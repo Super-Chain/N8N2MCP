@@ -77,6 +77,17 @@ def start_mcp_router():
         env=env
     )
 
+def get_credential_docs_link(credential_name):
+    """Returns the documentation link for a given credential."""
+    docs_links = {
+        "SUPABASE_URL": "https://supabase.com/docs/guides/getting-started/quickstarts/flask",
+        "SUPABASE_KEY": "https://supabase.com/docs/guides/getting-started/quickstarts/flask",
+        "SUPABASE_SERVICE_KEY": "https://supabase.com/docs/guides/getting-started/quickstarts/flask",
+        "X_N8N_API_KEY": "https://docs.n8n.io/hosting/scaling/worker-nodes/#api-key",
+        "N8N_BASE_URL": "https://docs.n8n.io/hosting/scaling/worker-nodes/#api-key",
+    }
+    return docs_links.get(credential_name, "No documentation link available.")
+
 def check_environment():
     """Check if environment is properly configured"""
     print("🔍 Checking environment configuration...")
@@ -98,9 +109,18 @@ def check_environment():
         print("❌ Missing required environment variables:")
         for var in missing_vars:
             print(f"   - {var}")
-        print("\nPlease configure these in your .env file")
-        return False
-    
+        print("\nPlease provide the missing credentials:")
+        for var in missing_vars:
+            value = input(f"   - {var}: ")
+            os.environ[var] = value
+        print("\nCredentials have been set for this session.")
+        print("To avoid this prompt in the future, please create a .env file with the following content:")
+        for var in required_vars:
+            print(f"{var}={os.getenv(var)}")
+        print("\nFor more information on how to get these credentials, please refer to the documentation:")
+        for var in missing_vars:
+            print(f"   - {var}: {get_credential_docs_link(var)}")
+
     print("✅ Environment configuration OK")
     return True
 

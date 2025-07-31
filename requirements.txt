@@ -78,7 +78,7 @@ google-auth==2.40.3
 google-auth-httplib2==0.2.0
 google-auth-oauthlib==1.2.2
 googleapis-common-protos==1.70.0
-gotrue==2.12.2
+gotrue==2.12.3
 greenlet==3.2.3
 grpcio==1.73.0
 gunicorn==21.2.0
@@ -254,7 +254,7 @@ pyzmq==27.0.0
 
 # Search and ranking
 rank-bm25==0.2.2
-realtime==2.5.3
+realtime==2.6.0
 referencing==0.36.2
 regex==2024.11.6
 
@@ -272,7 +272,6 @@ rsa==4.9.1
 safetensors==0.5.3
 scikit-learn==1.7.0
 scipy==1.15.3
-sentence-transformers==0.3.0
 setuptools==80.9.0
 shellingham==1.5.4
 six==1.17.0
@@ -300,7 +299,6 @@ tinycss2==1.4.0
 tokenizers==0.21.1
 
 # PyTorch and deep learning
-torch==2.7.1
 tornado==6.5.1
 tqdm==4.67.1
 traitlets==5.14.3

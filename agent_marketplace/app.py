@@ -26,11 +26,7 @@ workflow_parser = N8NWorkflowParser()
 @app.route('/')
 def index():
     """Main workflows page - N8N integration interface"""
-    return render_template('workflows.html')
-
-@app.route('/static/<path:filename>')
-def static_files(filename):
-    return send_from_directory('static', filename)
+    return render_template('index.html')
 
 @app.route('/api/health', methods=['GET'])
 def health_check():

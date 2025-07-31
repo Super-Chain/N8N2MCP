@@ -1,0 +1,18 @@
+/*
+ * -------------------------
+ * Bright Pastel Theme
+ * -------------------------
+ * This file defines the color palette and other reusable variables for the new
+ * modern, minimalistic, and animated frontend design.
+ */
+:root {
+    --primary-color: #FFADAD; /* A soft, welcoming pink */
+    --secondary-color: #FFD6A5; /* A warm, friendly orange */
+    --accent-color: #FDFFB6; /* A bright, eye-catching yellow */
+    --background-color: #CAFFBF; /* A calm, soothing green */
+    --text-color: #9BF6FF; /* A cool, readable blue */
+    --text-color-dark: #A0C4FF; /* A darker blue for contrast */
+    --font-family: 'Poppins', sans-serif; /* A modern, friendly font */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+    --border-radius: 12px; /* Rounded corners for a softer look */
+}
