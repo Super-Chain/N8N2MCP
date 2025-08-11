@@ -125,9 +125,9 @@ graph TB
 4. **Configure environment**
    ```bash
    # Copy and edit the .env file (see Environment Configuration section)
-   cp env.example .env
-   # Edit .env with your actual configuration values
+   cp .env.example .env
    ```
+   
     ```.env
     # Supabase Configuration
     SUPABASE_URL=https://your-project-id.supabase.co
