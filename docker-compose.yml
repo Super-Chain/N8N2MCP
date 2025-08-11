@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # N8N2MCP Application (runs both Flask and MCP Router via main.py)
+  n8n2mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: n8n2mcp
+    ports:
+      - "5000:5000"  # Flask App
+      - "6545:6545"  # MCP Router
+    environment:
+      - FLASK_HOST=0.0.0.0
+      - FLASK_PORT=5000
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=6545
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - X_N8N_API_KEY=${X_N8N_API_KEY}
+      - N8N_BASE_URL=${N8N_BASE_URL}
+    volumes:
+      - ./agent_marketplace:/app/agent_marketplace
+      - ./mcp_router:/app/mcp_router
+    restart: unless-stopped
+
+networks:
+  default:
+    name: n8n2mcp-network

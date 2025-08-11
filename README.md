@@ -76,6 +76,35 @@ graph TB
 
 ### Quick Start
 
+#### Option 1: Docker Compose (Recommended)
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Super-Chain/N8N2MCP.git
+   cd N8N2MCP
+   ```
+
+2. **Configure environment**
+   ```bash
+   cp env.example .env
+   # Edit .env with your actual configuration values
+   ```
+
+3. **Start with Docker Compose**
+   ```bash
+   docker-compose up -d
+   ```
+   This starts:
+   - Flask App (Agent Marketplace) at: http://localhost:5000
+   - MCP Router at: http://localhost:6545
+
+4. **View logs**
+   ```bash
+   docker-compose logs -f
+   ```
+
+#### Option 2: Manual Installation
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Super-Chain/N8N2MCP.git
@@ -96,7 +125,7 @@ graph TB
 4. **Configure environment**
    ```bash
    # Copy and edit the .env file (see Environment Configuration section)
-   cp .env.example .env
+   cp env.example .env
    # Edit .env with your actual configuration values
    ```
     ```.env
